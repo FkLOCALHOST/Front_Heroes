@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getHeroesById as getHeroesByIdRequest } from "../../services/api";
 
-const useGetProducto = (id) => {
+export const useGetHeroesById = (id) => {
     const [heroes, setHeroes] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -26,5 +26,3 @@ const useGetProducto = (id) => {
 
     return { heroes, loading, error };
 };
-
-export default useGetProducto;
