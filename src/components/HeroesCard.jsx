@@ -20,7 +20,6 @@ export const HeroesCard = () => {
 
     return (
         <div>
-            <h1>Dashboard de Héroes</h1>
             <ul className='hero-list'>
                 {heroes.length > 0 ? (
                     heroes.map(hero => (

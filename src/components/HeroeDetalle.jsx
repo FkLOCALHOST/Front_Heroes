@@ -1,28 +1,28 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGetHeroesById } from "../shared/hooks";
-import { Line } from "react-chartjs-2";
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from "chart.js";
-import "../assets/styles/herosDatails/hero.css"
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+import { Bar } from "react-chartjs-2";
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
+import "../assets/styles/herosDatails/hero.css";
+
+// Registrar los componentes de Chart.js
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export const HeroeDetalle = () => {
     const { id } = useParams();
     const { hero, loading, error } = useGetHeroesById(id);
     const navigate = useNavigate();
 
-    console.log("hero:", hero); 
-
     if (loading) {
-        return <div>Cargando información del héroe...</div>;
+        return <div className="loading">Cargando información del héroe...</div>;
     }
 
     if (error) {
-        return <div>Error al cargar el héroe: {error}</div>;
+        return <div className="error">Error al cargar el héroe: {error}</div>;
     }
 
     if (!hero) {
-        return <div>No se pudo encontrar el héroe.</div>;
+        return <div className="error">No se pudo encontrar el héroe.</div>;
     }
 
     const data = {
@@ -38,22 +38,36 @@ export const HeroeDetalle = () => {
                     hero.powerstats.power,
                     hero.powerstats.combat,
                 ],
-                fill: false,
+                backgroundColor: "rgba(75, 192, 192, 0.6)",
                 borderColor: "rgb(75, 192, 192)",
-                tension: 0.1,
+                borderWidth: 1,
             },
         ],
     };
 
+    const options = {
+        indexAxis: "y", // Hacer las barras horizontales
+        responsive: true,
+        plugins: {
+            legend: {
+                position: "top",
+            },
+            title: {
+                display: true,
+                text: "Estadísticas de Poder del Héroe",
+            },
+        },
+    };
+
     return (
-        <div className="container">
+        <div className="hero-container">
             <div className="hero-header">
                 <h1>{hero.name} (ID: {hero.id})</h1>
             </div>
 
             <div className="hero-details">
                 <div className="hero-left">
-                    <img src={hero.image.url} alt={hero.name} style={{ width: "100%", maxWidth: "300px", height: "auto" }} />
+                    <img src={hero.image.url} alt={hero.name} className="hero-img" />
                     <h3>Biografía:</h3>
                     <p>
                         <strong>Full Name:</strong> {hero.biography["full-name"]}
@@ -76,11 +90,11 @@ export const HeroeDetalle = () => {
                     <p><strong>Hair Color:</strong> {hero.appearance["hair-color"]}</p>
 
                     <h3>Powerstats:</h3>
-                    <div style={{ width: "100%", maxWidth: "500px", marginBottom: "30px" }}>
-                        <Line data={data} />
+                    <div className="hero-chart">
+                        <Bar data={data} options={options} />
                     </div>
 
-                    <button onClick={() => navigate("/")} style={{ padding: "10px", backgroundColor: "#007BFF", color: "white", border: "none", borderRadius: "5px", cursor: "pointer" }}>
+                    <button onClick={() => navigate("/")} className="btn-back">
                         Regresar al Dashboard
                     </button>
                 </div>
