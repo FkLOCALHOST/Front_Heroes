@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getHeroes as getHeroesRequest } from "../../services/api";
 
-const useGetHeroes = () => {
+export const useGetHeroes = () => {
     const [heroes, setHeroes] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -20,8 +20,6 @@ const useGetHeroes = () => {
                 setLoading(false);
             }
             getHeroes();
-            const interval = setInterval(getHeroes, 5000)
-            return () => clearInterval(interval)
         }
     }, [])
     return{
