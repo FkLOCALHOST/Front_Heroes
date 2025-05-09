@@ -1,0 +1,143 @@
+/* Contenedor general */
+.hero-container {
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e3f2fd;
+  /* Fondo azul claro */
+  color: #333;
+}
+
+/* Título del héroe */
+.hero-header {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #007bff;
+}
+
+/* Detalles del héroe */
+.hero-details {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* Ajustar el espaciado entre las secciones */
+}
+
+/* Sección de la izquierda (imagen y biografía) */
+.hero-left {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-left: 1px;
+  margin-right: 1000px;
+  flex: 1;
+  max-width: 300px;
+  text-align: center;
+  margin-bottom: 20px;
+  /* Reducir el espacio debajo de la imagen */
+}
+
+/* Imagen del héroe */
+.hero-img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* Títulos de las secciones (Biografía y Apariencia) */
+.hero-left h3,
+.hero-right h3 {
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  color: #007bff;
+}
+
+/* Estilos de los párrafos */
+.hero-left p,
+.hero-right p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+/* Sección de la derecha (apariencia y gráfico de estadísticas) */
+.hero-right {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex: 2;
+  max-width: 600px;
+  margin-bottom: 20px;
+  /* Reducir espacio debajo del gráfico */
+}
+
+/* Estilos para la gráfica */
+.hero-chart {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+/* Estilo del botón */
+.btn-back {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.btn-back:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos de carga y error */
+.loading,
+.error {
+  font-size: 1.2rem;
+  color: #ff4d4f;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .hero-details {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    /* Ajustar el espacio entre las columnas en pantallas pequeñas */
+  }
+
+  .hero-left,
+  .hero-right {
+    max-width: 100%;
+  }
+}
+
+.search-bar {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
