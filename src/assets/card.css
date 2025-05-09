@@ -1,0 +1,47 @@
+/* HeroCard.css */
+
+.hero-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #021024; /* fondo general */
+}
+
+.hero-card {
+  background-color: #052659;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  color: #C1E8FF;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+.hero-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border: 3px solid #5483B3;
+  border-radius: 50%;
+  background-color: #7DA0CA;
+  padding: 0.25rem;
+}
+
+.hero-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  color: #C1E8FF;
+}
+
+.hero-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #7DA0CA;
+}
